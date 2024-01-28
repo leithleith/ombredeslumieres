@@ -15,8 +15,8 @@ const mapcaracs = {
 var jeunesse = ["Amoureuse","Autoritaire","Choyée","Laborieuse","Orpheline","Rebelle","Solitaire","Studieuse","Sur la mer","Turbulente"];
 var competencesphysiques = ["Acrobaties","Athlétisme","Equitation","Escalade","Natation"];
 var competencessociales = ["Comédie","Discrétion","Empathie","Etiquette","Intimidation","Meneur","Persuasion","Politique","Séduction","Vigilance"];
-var competencesconnaissance = ["Alchimie","Connaissances","Débrouillardise","Dressage","Droit","Jeu","Herboristerie","Langue étrangère","Lire/Ecrire","Marchandage","Médecine","Navigation","Occultisme","Raillerie","Religion","Sciences","Serrurerie"];
-var competencestechniques = ["Art","Artisanat","Attelage","Canotage","Cartographie","Chasse","Chirurgie","Dressage","Jeu","Larcins","Mécanique","Soins","Survie"];
+var competencesconnaissance = ["Alchimie","Connaissances","Débrouillardise","Droit","Jeu","Herboristerie","Langue étrangère","Lire/Ecrire","Marchandage","Médecine","Navigation","Occultisme","Raillerie","Religion","Sciences","Serrurerie"];
+var competencestechniques = ["Art","Artisanat","Attelage","Canotage","Cartographie","Chasse","Chirurgie","Dressage","Larcins","Mécanique","Soins","Survie"];
 var competencescombat = ["Arbalète","Arc","Bagarre","Baïonnette","Bâton","Combat à deux armes","Dague (lancée)","Dague (tenue)","Epée","Escrime","Esquive","Hast","Hâche","Lutte","Main gauche","Massue","Mousquet","Pistolet","Sabre"];
 var listecompetences = competencesphysiques.concat(competencessociales).concat(competencesconnaissance).concat(competencestechniques).concat(competencescombat);
 var mincompetences = [];
@@ -960,16 +960,19 @@ function passeavantages()
         }
         document.getElementById("stopavantages").disabled = true;
         document.getElementById("pointscompetences").value = 12 + Number(document.getElementById("pointsavantages").value);
-        for (var i = 0; i < listecompetences.length; i++)
+        if (document.getElementById("pointscompetences").value > 0)
         {
-            document.getElementById(listecompetences[i]).disabled = false;
-        }
-        document.getElementById("Escrime").disabled = true;
-        for (var i = 17; i < 21; i++)
-        {
-            if (document.getElementById("avantages" + i).checked == true )
+            for (var i = 0; i < listecompetences.length; i++)
             {
-                document.getElementById("Escrime").disabled = false;
+                document.getElementById(listecompetences[i]).disabled = false;
+            }
+            document.getElementById("Escrime").disabled = true;
+            for (var i = 17; i < 21; i++)
+            {
+                if (document.getElementById("avantages" + i).checked == true )
+                {
+                    document.getElementById("Escrime").disabled = false;
+                }
             }
         }
     }
@@ -978,7 +981,7 @@ function calculcompetences(quellecompetence)
 {
     if (Number(document.getElementById("pointscompetences").value) > 0)
     {
-        if (isNaN(document.getElementById(quellecompetence).value) || document.getElementById(quellecompetence).value < mincompetences[listecompetences.indexOf(quellecompetence)] || document.getElementById(quellecompetence).value > 6)
+        if (isNaN(document.getElementById(quellecompetence).value) || document.getElementById(quellecompetence).value < mincompetences[listecompetences.indexOf(quellecompetence)] || document.getElementById(quellecompetence).value > 6 || Number(document.getElementById("pointscompetences").value) - (document.getElementById(quellecompetence).value - competences[listecompetences.indexOf(quellecompetence)]) < 0)
         {
             document.getElementById(quellecompetence).value = competences[listecompetences.indexOf(quellecompetence)];
         }
@@ -986,7 +989,7 @@ function calculcompetences(quellecompetence)
         {
             competences[listecompetences.indexOf(quellecompetence)] = Number(document.getElementById(quellecompetence).value);
         }
-        document.getElementById("pointscompetences").value = 12 - (competences.reduceRight(function (a, b) { return a + b;}) - totalcompetences);
+        document.getElementById("pointscompetences").value = 12 + Number(document.getElementById("pointsavantages").value) - (competences.reduceRight(function (a, b) { return a + b;}) - totalcompetences);
     }
     if (Number(document.getElementById("pointscompetences").value) == 0)
     {
