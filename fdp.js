@@ -148,31 +148,32 @@ function calculenfance()
             mincompetences.push(0);
             competences.push(0);
         };
-        document.getElementById('tablecompetencestechniques').innerHTML = '<tr><td><b>Techniques :</b></td></tr>';
-        for (var i = 0 ; i < competencestechniques.length ; i++)
+        var table = document.createElement("table");
+        var ligneentete = document.createElement("tr");
+        var entetes = ["Techniques","Sociales","Physiques","Connaissances","Combat"];
+        for (var i=0;i<entetes.length;i++)
         {
-            document.getElementById('tablecompetencestechniques').innerHTML += '<tr><td>' + competencestechniques[i] + ' :<input type="number" name="' + competencestechniques[i] + '" id="' + competencestechniques[i] +'" size="3" maxlength="1" min="0" max="6" value="0" disabled onchange="calculcompetences(\'' + competencestechniques[i] + '\')"></td></tr>';
+            var celluleentete = document.createElement("td");
+            celluleentete.innerHTML = '<b>' + entetes[i] + '</b>';
+            ligneentete.appendChild(celluleentete);
         }
-        document.getElementById('tablecompetencessociales').innerHTML = '<tr><td><b>Sociales :</b></td></tr>';
-        for (var i = 0 ; i < competencessociales.length ; i++)
+        table.appendChild(ligneentete);
+        var maxArrayLength = Math.max(competencestechniques.length, competencessociales.length, competencesphysiques.length, competencesconnaissance.length, competencescombat.length);
+        for (let i = 0; i < maxArrayLength; i++)
         {
-            document.getElementById('tablecompetencessociales').innerHTML += '<tr><td>' + competencessociales[i] + ' :<input type="number" name="' + competencessociales[i] + '" id="' + competencessociales[i] +'" size="3" maxlength="1" min="0" max="6" value="0" disabled onchange="calculcompetences(\'' + competencessociales[i] + '\')"></td></tr>';
+            var row = document.createElement("tr");
+            [competencestechniques, competencessociales, competencesphysiques, competencesconnaissance, competencescombat].forEach(array => {
+                var cell = document.createElement("td");
+                cell.textContent = array[i] || "";
+                if (cell.textContent != "")
+                {
+                    cell.innerHTML += ' :<input type="number" name="' + array[i] + '" id="' + array[i] +'" size="3" maxlength="1" min="0" max="6" value="0" disabled onchange="calculcompetences(\'' + array[i] + '\')">';
+                }
+                row.appendChild(cell);
+            });
+            table.appendChild(row);
         }
-        document.getElementById('tablecompetencesphysiques').innerHTML = '<tr><td><b>Physiques :</b></td></tr>';
-        for (var i = 0 ; i < competencesphysiques.length ; i++)
-        {
-            document.getElementById('tablecompetencesphysiques').innerHTML += '<tr><td>' + competencesphysiques[i] + ' :<input type="number" name="' + competencesphysiques[i] + '" id="' + competencesphysiques[i] +'" size="3" maxlength="1" min="0" max="6" value="0" disabled onchange="calculcompetences(\'' + competencesphysiques[i] + '\')"></td></tr>';
-        }
-        document.getElementById('tablecompetencesconnaissance').innerHTML = '<tr><td><b>Connaissances :</b></td></tr>';
-        for (var i = 0 ; i < competencesconnaissance.length ; i++)
-        {
-            document.getElementById('tablecompetencesconnaissance').innerHTML += '<tr><td>' + competencesconnaissance[i] + ' :<input type="number" name="' + competencesconnaissance[i] + '" id="' + competencesconnaissance[i] +'" size="3" maxlength="1" min="0" max="6" value="0" disabled onchange="calculcompetences(\'' + competencesconnaissance[i] + '\')"></td></tr>';
-        }
-        document.getElementById('tablecompetencescombat').innerHTML = '<tr><td><b>Combat :</b></td></tr>';
-        for (var i = 0 ; i < competencescombat.length ; i++)
-        {
-            document.getElementById('tablecompetencescombat').innerHTML += '<tr><td>' + competencescombat[i] + ' :<input type="number" name="' + competencescombat[i] + '" id="' + competencescombat[i] +'" size="3" maxlength="1" min="0" max="6" value="0" disabled onchange="calculcompetences(\'' + competencescombat[i] + '\')"></td></tr>';
-        }
+        document.body.appendChild(table);
         var choixenfance1 = '';
         var choixenfance2 = '';
         var choixenfance3 = '';

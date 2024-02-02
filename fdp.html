@@ -10,105 +10,97 @@
     <h1>Dans l'Ombre des Lumières</h1>
     <h2>Génération de personnage</h2>
     <h3>NB : procéder étape par étape, à chaque étape les choix sont définitifs</h3>
-    <form name="personnage">
-        <hr>
-        <h3>1. Origines géographiques du personnage :</h3>
-        <select id="geo" name="geo" onchange="calculgeo()">
-            <option value="">Choisir une origine géographique</option>
-            <option value="France">France</option>
-            <option value="Créole">Créole</option>
-            <option value="Indien">Indien</option>
-        </select>
-        <hr>
-        <h3>2. Origines sociales du personnage :</h3>
-        <select id="sociale" name="sociale" disabled onchange="calculsociale()">
-        </select>
-        <br>
-        <select id="bonuscaracoriginesociale" name="bonuscaracoriginesociale" disabled onchange="calculbonuscaracoriginesociale()"></select>
-        <hr>
-        <h3>3. Caractéristiques du personnage :</h3>
-        <label id="pointscaracs" name="pointscaracs">16</label><label> points à distribuer</label>
-        <ul>
-            <li>Adaptabilité :<input type="number" size="3" maxlength="1" min="3" max="7" id="0" name="ada" value="3" disabled onchange="calcultotal(0)"></li>
-            <li>Adresse :<input type="number" size="3" maxlength="1" min="3" max="7" id="1" name="adr" value="3" disabled onchange="calcultotal(1)"></li>
-            <li>Charisme :<input type="number" size="3" maxlength="1" min="3" max="7" id="2" name="cha" value="3" disabled onchange="calcultotal(2)"></li>
-            <li>Erudition :<input type="number" size="3" maxlength="1" min="3" max="7" id="3" name="eru" value="3" disabled onchange="calcultotal(3)"></li>
-            <li>Expression :<input type="number" size="3" maxlength="1" min="3" max="7" id="4" name="exp" value="3" disabled onchange="calcultotal(4)"></li>
-            <li>Force :<input type="number" size="3" maxlength="1" min="3" max="7" id="5" name="for" value="3" disabled onchange="calcultotal(5)"></li>
-            <li>Perception :<input type="number" size="3" maxlength="1" min="3" max="7" id="6" name="per" value="3" disabled onchange="calcultotal(6)"></li>
-            <li>Pouvoir :<input type="number" size="3" maxlength="1" min="3" max="7" id="7" name="pou" value="3" disabled onchange="calcultotal(7)"></li>
-            <li>Résistance :<input type="number" size="3" maxlength="1" min="5" max="7" id="8" name="res" value="5" disabled onchange="calcultotal(8)"></li>
-        </ul>
-        <hr>
-        <h3>4. Enfance du personnage :</h3>
-        <label for="enfance">Archétype d'enfance :</label>
-        <select id="enfance" name="enfance" disabled onchange="calculenfance()">
-            <option value="">Choisir un typde d&#39;enfance</option>
-            <option value="1">Autoritaire</option>
-            <option value="2">Choyée</option>
-            <option value="3">Laborieuse</option>
-            <option value="4">Orpheline</option>
-            <option value="5">Rebelle</option>
-            <option value="6">Solitaire</option>
-            <option value="7">Studieuse</option>
-            <option value="9">Turbulente</option>
-        </select><br>
-        <label>Choisir 5 compétences d'enfance :</label>
-        <ol>
-            <li><select id="choixenfance1" name="choixenfance1" disabled onchange="calculchoixenfance()"></select></li>
-            <li><select id="choixenfance2" name="choixenfance2" disabled onchange="calculchoixenfance()"></select></li>
-            <li><select id="choixenfance3" name="choixenfance3" disabled onchange="calculchoixenfance()"></select></li>
-            <li><select id="choixenfance4" name="choixenfance4" disabled onchange="calculchoixenfance()"></select></li>
-            <li><select id="choixenfance5" name="choixenfance5" disabled onchange="calculchoixenfance()"></select></li>
-        </ol>
-        <hr>
-        <h3>5. Adolescence du personnage :</h3>
-        <label for="adolescence">Archétype d'adolescence :</label>
-        <select id="adolescence" name="adolescence" disabled onchange="calculadolescence()">
-        </select><br>
-        <label>Choisir 5 compétences d'adolescence :</label>
-        <ol>
-            <li><select id="choixadolescence1" name="choixadolescence1" disabled onchange="calculchoixadolescence()"></select></li>
-            <li><select id="choixadolescence2" name="choixadolescence2" disabled onchange="calculchoixadolescence()"></select></li>
-            <li><select id="choixadolescence3" name="choixadolescence3" disabled onchange="calculchoixadolescence()"></select></li>
-            <li><select id="choixadolescence4" name="choixadolescence4" disabled onchange="calculchoixadolescence()"></select></li>
-            <li><select id="choixadolescence5" name="choixadolescence5" disabled onchange="calculchoixadolescence()"></select></li>
-        </ol>
-        <hr>
-        <h3>6. Profession du personnage :</h3>
-        <label for="archetype">Archétype du personnage :</label>
-        <select id="archetype" name="archetype" disabled onchange="calcularchetype()">
-            <option value="">Choisir un archétype pour le personnage</option>
-            <option value="Amuseur">Amuseur</option>
-            <option value="Manuel">Artisan, Domestique, Ouvrier, Paysan</option>
-            <option value="Bourgeois">Bourgeois</option>
-            <option value="Courtisan">Courtisan</option>            
-            <option value="Ecclésiastique">Ecclésiastique</option>
-            <option value="Intellectuel">Intellectuel</option>
-            <option value="Malandrin">Malandrin</option>
-            <option value="Militaire">Militaire</option>
-        </select><br>
-        <label for="metier">Métier du personnage :</label>
-        <select id="metier" name="metier" disabled onchange="calculmetier()"></select><br>
-        <select id="bonuscaracmetier" name="bonuscaracmetier" disabled onchange="calculbonuscaracmetier()"></select>
-        <select id="bonuscaracmetier2" name="bonuscaracmetier2" disabled onchange="calculbonuscaracmetier2()"></select>
-        <hr>        
-        <h3>7. Avantages et Faiblesses :</h3>
-        <p>NB : maximum 5 avantages et 5 faiblesses ; pas plus de 12 points d'avantages.<br>Balance des points :</label><input type="number" size="6" disabled value="0" id="pointsavantages" name="pointsavantages"></p>
-        <p><b>Faiblesses :</b></p>
-        <p id="faiblesses"></p>
-        <p><b>Avantages :</b></p>
-        <p id="avantages"></p>
-        <button id="stopavantages" onclick="passeavantages()" disabled>Passer à l'étape suivante</button>
-        <hr>
-        <h3>8. Compétences du personnage :</h3>
-        <label for="pointscompetences">Points de Compétences à distribuer :</label><input type="number" size="6" disabled id="pointscompetences" name="pointscompetences"><br>
-        <table id="tablecompetencestechniques" name="tablecompetencestechniques"></table>
-        <table id="tablecompetencessociales" name="tablecompetencessociales"></table>
-        <table id="tablecompetencesphysiques" name="tablecompetencesphysiques"></table>
-        <table id="tablecompetencesconnaissance" name="tablecompetencesconnaissance"></table>
-        <table id="tablecompetencescombat" name="tablecompetencescombat"></table>
-        <hr>
-    </form>
+    <hr>
+    <h3>1. Origines géographiques du personnage :</h3>
+    <select id="geo" name="geo" onchange="calculgeo()">
+        <option value="">Choisir une origine géographique</option>
+        <option value="France">France</option>
+        <option value="Créole">Créole</option>
+        <option value="Indien">Indien</option>
+    </select>
+    <hr>
+    <h3>2. Origines sociales du personnage :</h3>
+    <select id="sociale" name="sociale" disabled onchange="calculsociale()">
+    </select>
+    <br>
+    <select id="bonuscaracoriginesociale" name="bonuscaracoriginesociale" disabled onchange="calculbonuscaracoriginesociale()"></select>
+    <hr>
+    <h3>3. Caractéristiques du personnage :</h3>
+    <label id="pointscaracs" name="pointscaracs">16</label><label> points à distribuer</label>
+    <ul>
+        <li>Adaptabilité :<input type="number" size="3" maxlength="1" min="3" max="7" id="0" name="ada" value="3" disabled onchange="calcultotal(0)"></li>
+        <li>Adresse :<input type="number" size="3" maxlength="1" min="3" max="7" id="1" name="adr" value="3" disabled onchange="calcultotal(1)"></li>
+        <li>Charisme :<input type="number" size="3" maxlength="1" min="3" max="7" id="2" name="cha" value="3" disabled onchange="calcultotal(2)"></li>
+        <li>Erudition :<input type="number" size="3" maxlength="1" min="3" max="7" id="3" name="eru" value="3" disabled onchange="calcultotal(3)"></li>
+        <li>Expression :<input type="number" size="3" maxlength="1" min="3" max="7" id="4" name="exp" value="3" disabled onchange="calcultotal(4)"></li>
+        <li>Force :<input type="number" size="3" maxlength="1" min="3" max="7" id="5" name="for" value="3" disabled onchange="calcultotal(5)"></li>
+        <li>Perception :<input type="number" size="3" maxlength="1" min="3" max="7" id="6" name="per" value="3" disabled onchange="calcultotal(6)"></li>
+        <li>Pouvoir :<input type="number" size="3" maxlength="1" min="3" max="7" id="7" name="pou" value="3" disabled onchange="calcultotal(7)"></li>
+        <li>Résistance :<input type="number" size="3" maxlength="1" min="5" max="7" id="8" name="res" value="5" disabled onchange="calcultotal(8)"></li>
+    </ul>
+    <hr>
+    <h3>4. Enfance du personnage :</h3>
+    <label for="enfance">Archétype d'enfance :</label>
+    <select id="enfance" name="enfance" disabled onchange="calculenfance()">
+        <option value="">Choisir un typde d&#39;enfance</option>
+        <option value="1">Autoritaire</option>
+        <option value="2">Choyée</option>
+        <option value="3">Laborieuse</option>
+        <option value="4">Orpheline</option>
+        <option value="5">Rebelle</option>
+        <option value="6">Solitaire</option>
+        <option value="7">Studieuse</option>
+        <option value="9">Turbulente</option>
+    </select><br>
+    <label>Choisir 5 compétences d'enfance :</label>
+    <ol>
+        <li><select id="choixenfance1" name="choixenfance1" disabled onchange="calculchoixenfance()"></select></li>
+        <li><select id="choixenfance2" name="choixenfance2" disabled onchange="calculchoixenfance()"></select></li>
+        <li><select id="choixenfance3" name="choixenfance3" disabled onchange="calculchoixenfance()"></select></li>
+        <li><select id="choixenfance4" name="choixenfance4" disabled onchange="calculchoixenfance()"></select></li>
+        <li><select id="choixenfance5" name="choixenfance5" disabled onchange="calculchoixenfance()"></select></li>
+    </ol>
+    <hr>
+    <h3>5. Adolescence du personnage :</h3>
+    <label for="adolescence">Archétype d'adolescence :</label>
+    <select id="adolescence" name="adolescence" disabled onchange="calculadolescence()">
+    </select><br>
+    <label>Choisir 5 compétences d'adolescence :</label>
+    <ol>
+        <li><select id="choixadolescence1" name="choixadolescence1" disabled onchange="calculchoixadolescence()"></select></li>
+        <li><select id="choixadolescence2" name="choixadolescence2" disabled onchange="calculchoixadolescence()"></select></li>
+        <li><select id="choixadolescence3" name="choixadolescence3" disabled onchange="calculchoixadolescence()"></select></li>
+        <li><select id="choixadolescence4" name="choixadolescence4" disabled onchange="calculchoixadolescence()"></select></li>
+        <li><select id="choixadolescence5" name="choixadolescence5" disabled onchange="calculchoixadolescence()"></select></li>
+    </ol>
+    <hr>
+    <h3>6. Profession du personnage :</h3>
+    <label for="archetype">Archétype du personnage :</label>
+    <select id="archetype" name="archetype" disabled onchange="calcularchetype()">
+        <option value="">Choisir un archétype pour le personnage</option>
+        <option value="Amuseur">Amuseur</option>
+        <option value="Manuel">Artisan, Domestique, Ouvrier, Paysan</option>
+        <option value="Bourgeois">Bourgeois</option>
+        <option value="Courtisan">Courtisan</option>            
+        <option value="Ecclésiastique">Ecclésiastique</option>
+        <option value="Intellectuel">Intellectuel</option>
+        <option value="Malandrin">Malandrin</option>
+        <option value="Militaire">Militaire</option>
+    </select><br>
+    <label for="metier">Métier du personnage :</label>
+    <select id="metier" name="metier" disabled onchange="calculmetier()"></select><br>
+    <select id="bonuscaracmetier" name="bonuscaracmetier" disabled onchange="calculbonuscaracmetier()"></select>
+    <select id="bonuscaracmetier2" name="bonuscaracmetier2" disabled onchange="calculbonuscaracmetier2()"></select>
+    <hr>        
+    <h3>7. Avantages et Faiblesses :</h3>
+    <p>NB : maximum 5 avantages et 5 faiblesses ; pas plus de 12 points d'avantages.<br>Balance des points :</label><input type="number" size="6" disabled value="0" id="pointsavantages" name="pointsavantages"></p>
+    <p><b>Faiblesses :</b></p>
+    <p id="faiblesses"></p>
+    <p><b>Avantages :</b></p>
+    <p id="avantages"></p>
+    <button id="stopavantages" onclick="passeavantages()" disabled>Passer à l'étape suivante</button>
+    <hr>
+    <h3>8. Compétences du personnage :</h3>
+    <p>Points de Compétences à distribuer :</label><input type="number" size="6" disabled id="pointscompetences" name="pointscompetences"></p>
 </body>
 </html>
