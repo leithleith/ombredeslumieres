@@ -14,10 +14,10 @@ const mapcaracs = {
 };
 var jeunesse = ["Amoureuse","Autoritaire","Choyée","Laborieuse","Orpheline","Rebelle","Solitaire","Studieuse","Sur la mer","Turbulente"];
 var competencesphysiques = ["Acrobaties","Athlétisme","Equitation","Escalade","Natation"];
-var competencessociales = ["Comédie","Discrétion","Empathie","Etiquette","Intimidation","Meneur","Persuasion","Politique","Séduction","Vigilance"];
-var competencesconnaissance = ["Alchimie","Connaissances","Débrouillardise","Droit","Jeu","Herboristerie","Langue étrangère","Lire/Ecrire","Marchandage","Médecine","Navigation","Occultisme","Raillerie","Religion","Sciences","Serrurerie"];
-var competencestechniques = ["Art","Artisanat","Attelage","Canotage","Cartographie","Chasse","Chirurgie","Dressage","Larcins","Mécanique","Soins","Survie"];
-var competencescombat = ["Arbalète","Arc","Bagarre","Baïonnette","Bâton","Combat à deux armes","Dague (lancée)","Dague (tenue)","Epée","Escrime","Esquive","Hast","Hâche","Lutte","Main gauche","Massue","Mousquet","Pistolet","Sabre"];
+var competencessociales = ["Comédie","Discrétion","Empathie","Etiquette","Intimidation","Meneur","Persuasion","Politique","Séduction","Vigilance","Raillerie"];
+var competencesconnaissance = ["Alchimie","Connaissances","Débrouillardise","Jeu","Herboristerie","Langue étrangère","Lire/Ecrire","Marchandage","Médecine","Navigation","Occultisme","Religion","Sciences","Serrurerie"];
+var competencestechniques = ["Art","Artisanat","Attelage","Canotage","Chasse","Chirurgie","Dressage","Larcins","Mécanique","Soins","Survie"];
+var competencescombat = ["Arbalète","Arc","Bagarre","Baïonnette","Bâton","Escrime à deux armes","Dague (lancée)","Dague (tenue)","Epée","Escrime","Esquive","Hâche","Lutte","Seconde Main","Mousquet","Pistolet","Sabre"];
 var listecompetences = competencesphysiques.concat(competencessociales).concat(competencesconnaissance).concat(competencestechniques).concat(competencescombat);
 var mincompetences = [];
 var competences = [];
